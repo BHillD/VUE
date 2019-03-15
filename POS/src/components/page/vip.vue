@@ -8,7 +8,7 @@
             <el-col :span="24">
               <el-form :inline="true" :model="search">
                 <el-form-item>
-                  <el-input v-model="search" placeholder="请输入姓名"></el-input>
+                  <el-input v-model="search.name" placeholder="请输入姓名"></el-input>
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="searchUser">查询</el-button>
@@ -124,7 +124,9 @@ Date.prototype.Format = function(fmt)
 export default {
   data(){
     return{
-      search:"",
+      search:{
+        name:""
+      },
 
       loading:false,
 
@@ -178,7 +180,7 @@ export default {
 
     searchUser:function(){
       let para={
-        name:this.search
+        name:this.search.name
       }  
       this.loading = true;         
       getUserList(para).then((res) => {
